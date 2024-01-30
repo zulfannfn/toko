@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -26,7 +27,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/homepage', [ProdukController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/product', [ProdukController::class, 'index'])->name('product');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

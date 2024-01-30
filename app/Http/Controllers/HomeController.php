@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 
-class ProdukController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class ProdukController extends Controller
     public function index()
     {
         $produk = Produk::all();
-        return inertia::render('Product', [
+        return inertia::render('Home', [
             'produk' => $produk,
             'assetUrl' => asset(''),
         ]);

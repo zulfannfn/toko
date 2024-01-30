@@ -1,4 +1,8 @@
-const Navbar = () => {
+import { Link } from "@inertiajs/react";
+import React from "react";
+import Dropdown from "./Dropdown";
+
+const Navbar = ({ user }) => {
     return (
         <>
             <div className="navbar bg-base-100 font-clash">
@@ -52,17 +56,21 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex font-medium">
                     <ul className="menu menu-horizontal px-1">
                         <li>
-                            <a>Home</a>
+                            <Link href={route("home")} as="button">
+                                Home
+                            </Link>
                         </li>
                         <li>
                             <details>
                                 <summary>Product</summary>
                                 <ul className="p-2">
                                     <li>
-                                        <a>Submenu</a>
-                                    </li>
-                                    <li>
-                                        <a>Submenu</a>
+                                        <Link
+                                            href={route("product")}
+                                            as="button"
+                                        >
+                                            Product
+                                        </Link>
                                     </li>
                                 </ul>
                             </details>
@@ -73,12 +81,66 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end text-sm">
-                    <a className="py-2 px-6 bg-white text-black rounded-full font-medium">
-                        Login
-                    </a>
-                    <a className="py-2 px-6 bg-black text-white rounded-full font-medium">
-                        Sign Up
-                    </a>
+                    {user ? (
+                        <div>
+                            <div className="dropdown dropdown-end">
+                                <div
+                                    tabIndex={0}
+                                    role="button"
+                                    className="btn btn-ghost btn-circle avatar"
+                                >
+                                    <div className="w-10 rounded-full">
+                                        <img
+                                            alt="Tailwind CSS Navbar component"
+                                            src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                                        />
+                                    </div>
+                                </div>
+                                <ul
+                                    tabIndex={0}
+                                    className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                                >
+                                    <li>
+                                        <Dropdown.Link
+                                            href={route("profile.edit")}
+                                            className="justify-between flex flex-row"
+                                        >
+                                            <p>Profile</p>
+                                            <div className="badge">
+                                                {user.name}
+                                            </div>
+                                        </Dropdown.Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            href={route("logout")}
+                                            as="button"
+                                            method="post"
+                                        >
+                                            Logout
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    ) : (
+                        <div>
+                            <Link
+                                href={route("login")}
+                                as="button"
+                                className="py-2 px-6 bg-white text-black rounded-full font-medium"
+                            >
+                                Login
+                            </Link>
+                            <Link
+                                href={route("register")}
+                                as="button"
+                                className="py-2 px-6 bg-black text-white rounded-full font-medium"
+                            >
+                                Register
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </div>
         </>

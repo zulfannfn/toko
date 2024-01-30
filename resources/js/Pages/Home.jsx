@@ -4,13 +4,14 @@ import Navbar from "@/Components/Navbar";
 import Heading from "@/Components/Heading";
 import SectionProduct from "@/Components/SectionProduct";
 
-export default function Homepage(props) {
-    console.log(props.produk);
+export default function Home({ auth, produk }) {
     return (
         <div className="container m-auto">
-            <Navbar />
+            <Head title="Home" />
+
+            <Navbar user={auth.user} />
             <Heading />
-            <SectionProduct />
+            <SectionProduct produk={produk} />
         </div>
     );
 }
