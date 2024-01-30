@@ -22,7 +22,7 @@ use Inertia\Inertia;
 */
 
 // Route::get('/', function () {
-//     return Inertia::render('Welcome', [
+//     return Inertia::render('home', [
 //         'canLogin' => Route::has('login'),
 //         'canRegister' => Route::has('register'),
 //         'laravelVersion' => Application::VERSION,
@@ -30,13 +30,22 @@ use Inertia\Inertia;
 //     ]);
 // });
 
+// Route::get('/', function () {
+//     return Inertia::render('home')->with([
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => app()->version(),
+//         'phpVersion' => phpversion(),
+//     ]);
+// })->name('home')->uses([HomeController::class, 'index']);
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/product', [ProdukController::class, 'index'])->name('product');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return Inertia::render('Dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
