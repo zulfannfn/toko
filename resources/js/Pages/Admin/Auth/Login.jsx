@@ -7,7 +7,7 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
 
-export default function Login({ status, canResetPassword }) {
+export default function LoginAdmin({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
         password: "",
@@ -23,7 +23,7 @@ export default function Login({ status, canResetPassword }) {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route("login"));
+        post(route("admin.login"));
     };
 
     return (
@@ -35,8 +35,9 @@ export default function Login({ status, canResetPassword }) {
                     {status}
                 </div>
             )}
+
             <div>
-                <p className="text-center">Login User</p>
+                <p className="text-center">Login Admin</p>
             </div>
             <form onSubmit={submit}>
                 <div>
@@ -96,7 +97,6 @@ export default function Login({ status, canResetPassword }) {
                             Forgot your password?
                         </Link>
                     )}
-
                     <PrimaryButton className="ms-4" disabled={processing}>
                         Log in
                     </PrimaryButton>

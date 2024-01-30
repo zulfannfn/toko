@@ -6,7 +6,7 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
 
-export default function Register() {
+export default function RegisterAdmin() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: "",
         email: "",
@@ -31,9 +31,6 @@ export default function Register() {
             <Head title="Register" />
 
             <form onSubmit={submit}>
-                <div>
-                    <p className="text-center">Regrister User</p>
-                </div>
                 <div>
                     <InputLabel htmlFor="name" value="Name" />
 
