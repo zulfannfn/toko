@@ -39,15 +39,14 @@ use Inertia\Inertia;
 //     ]);
 // })->name('home')->uses([HomeController::class, 'index']);
 
+
+// Area routig User :
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
 Route::get('/product', [ProdukController::class, 'index'])->name('product');
-
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
-
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -57,12 +56,12 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 
-Route::get('/admin/product', [ProdukAdminController::class, 'index'])->name('admin.product');
+// Area routig Admin :
 
+Route::get('/admin/product', [ProdukAdminController::class, 'index'])->name('admin.product');
 Route::get('/admin/dashboard', function () {
     return inertia::render('Admin/Dashboard');
 })->middleware(['auth:admin', 'verified'])->name('admin/dashboard');
-
 Route::middleware('auth:admin')->group(function () {
     Route::get('/admin/profile', [AdminController::class, 'edit'])->name('admin.profile.edit');
     Route::patch('/admin/profile', [AdminController::class, 'update'])->name('admin.profile.update');
