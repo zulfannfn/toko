@@ -7,7 +7,6 @@ export default function Product({ produk, auth }) {
     return (
         <div className="container m-auto">
             <Head title="Home" />
-
             <Navbar user={auth.user} />
             <div className="flex flex-row flex-wrap justify-center gap-6">
                 {produk.map((item, i) => {

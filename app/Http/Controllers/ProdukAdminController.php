@@ -36,7 +36,18 @@ class ProdukAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $produk = new Produk();
+        $produk->foto = $request->foto;
+        $produk->produk_id = $request->produkId;
+        $produk->nama_produk = $request->namaProduk;
+        $produk->harga = $request->harga;
+        $produk->stock = $request->stock;
+        $produk->kategori = $request->kategori;
+        $produk->ukuran = $request->ukuran;
+        $produk->warna = $request->warna;
+        $produk->deskripsi = $request->deskripsi;
+        $produk->save();
+        return redirect()->back()->with('message', 'Berhasil Di Masukan');
     }
 
     /**
@@ -44,7 +55,11 @@ class ProdukAdminController extends Controller
      */
     public function show(produk $produk)
     {
-        //
+        $produk = Produk::all();
+        return inertia::render('Admin/Product', [
+            'produk' => $produk,
+            'assetUrl' => asset(''),
+        ]);
     }
 
     /**

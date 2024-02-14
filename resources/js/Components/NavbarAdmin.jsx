@@ -36,7 +36,11 @@ const NavbarAdmin = ({ user }) => {
                                 className="justify-between flex flex-row"
                             >
                                 <p>Profile</p>
-                                <div className="badge">{user.name}</div>
+                                {user ? (
+                                    <div className="badge">{user.name}</div>
+                                ) : (
+                                    <div>Null</div>
+                                )}
                             </Dropdown.Link>
                         </li>
                         <li>

@@ -57,7 +57,8 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 
-Route::get('/admin/product', [ProdukAdminController::class, 'index'])->name('admin.product');
+Route::post('/admin/product', [ProdukAdminController::class, 'store'])->middleware(['auth:admin', 'verified'])->name('imput.product');
+Route::get('/admin/product', [ProdukAdminController::class, 'show'])->name('admin.product');
 
 Route::get('/admin/dashboard', function () {
     return inertia::render('Admin/Dashboard');
