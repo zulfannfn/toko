@@ -9,29 +9,27 @@ export default function NavDashboardLayout({ children }) {
                         <Link href={route("admin/dashboard")}>Dashboard</Link>
                     </li>
                     <li>
-                        <details open>
-                            <summary>Product</summary>
-                            <ul>
-                                <li>
-                                    <Link href={route("admin.product")}>
-                                        Kelola Product
-                                    </Link>
-                                </li>
-                                <li>
-                                    <a>Input Product</a>
-                                </li>
-                            </ul>
-                        </details>
+                        <Link href={route("admin.product")}>
+                            Product
+                        </Link>
+                    </li>
+                    <li>
+                    <Link href={route("admin.pelanggan")}>
+                            Pelanggan
+                        </Link>
+                    </li>
+                    <li>
+                        <a>User</a>
                     </li>
                     <li>
                         <details open>
-                            <summary>Pesanan Offline</summary>
+                            <summary>Transaksi</summary>
                             <ul>
                                 <li>
-                                    <a>Submenu 1</a>
+                                    <a>Penjualan</a>
                                 </li>
                                 <li>
-                                    <a>Submenu 2</a>
+                                    <a>Pembelian</a>
                                 </li>
                             </ul>
                         </details>
@@ -61,12 +59,8 @@ export default function NavDashboardLayout({ children }) {
                             </ul>
                         </details>
                     </li>
-                    <li>
-                        <a>Pelanggan</a>
-                    </li>
-                    <li>
-                        <a>Pesanan Selesai</a>
-                    </li>
+                    
+                    
                 </ul>
             </div>
             <div className="pl-4 w-full">{children}</div>

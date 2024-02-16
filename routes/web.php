@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProdukAdminController;
+use App\Http\Controllers\PelangganAdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Models\Admin;
@@ -59,6 +60,9 @@ require __DIR__ . '/auth.php';
 
 Route::post('/admin/product', [ProdukAdminController::class, 'store'])->middleware(['auth:admin', 'verified'])->name('imput.product');
 Route::get('/admin/product', [ProdukAdminController::class, 'show'])->name('admin.product');
+
+Route::post('/admin/pelanggan', [PelangganAdminController::class, 'store'])->middleware(['auth:admin', 'verified']);
+Route::get('/admin/pelanggan', [PelangganAdminController::class, 'show'])->name('admin.pelanggan');
 
 Route::get('/admin/dashboard', function () {
     return inertia::render('Admin/Dashboard');
