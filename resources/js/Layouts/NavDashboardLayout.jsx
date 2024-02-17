@@ -9,27 +9,23 @@ export default function NavDashboardLayout({ children }) {
                         <Link href={route("admin/dashboard")}>Dashboard</Link>
                     </li>
                     <li>
-                        <Link href={route("admin.product")}>
-                            Product
-                        </Link>
+                        <Link href={route("admin.product")}>Product</Link>
                     </li>
                     <li>
-                    <Link href={route("admin.pelanggan")}>
-                            Pelanggan
-                        </Link>
+                        <Link href={route("admin.pelanggan")}>Pelanggan</Link>
                     </li>
-                    <li>
-                        <a>User</a>
-                    </li>
+
                     <li>
                         <details open>
                             <summary>Transaksi</summary>
                             <ul>
                                 <li>
-                                    <a>Penjualan</a>
+                                    <Link href={route("admin.penjualan")}>
+                                        Penjualan
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a>Pembelian</a>
+                                    <a>Pembelian/Stock</a>
                                 </li>
                             </ul>
                         </details>
@@ -59,8 +55,6 @@ export default function NavDashboardLayout({ children }) {
                             </ul>
                         </details>
                     </li>
-                    
-                    
                 </ul>
             </div>
             <div className="pl-4 w-full">{children}</div>

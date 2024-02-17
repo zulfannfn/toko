@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pelanggan;
+use App\Models\Penjualan;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 
-class PelangganAdminController extends Controller
+class PenjualanAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class PelangganAdminController extends Controller
      */
     public function index()
     {
-        $pelanggan = Pelanggan::all();
-        return inertia::render('Admin/Pelanggan', [
-            'pelanggan' => $pelanggan,
+        $penjualan = Penjualan::all();
+        return inertia::render('Admin/Penjualan', [
+            'penjualan' => $penjualan,
             'assetUrl' => asset(''),
         ]);
     }
@@ -36,23 +36,23 @@ class PelangganAdminController extends Controller
      */
     public function store(Request $request)
     {
-        $pelanggan = new Pelanggan();
-        $pelanggan->id_pelanggan = $request->pelangganId;
-        $pelanggan->nama_pelanggan = $request->namaPelanggan;
-        $pelanggan->alamat = $request->alamat;
-        $pelanggan->nomor_telepon = $request->nomorTelepon;
-        $pelanggan->save();
+        $penjualan = new Penjualan();
+        $penjualan->id_penjualan = $request->idPenjualan;
+        $penjualan->id_pelanggan = $request->idPelanggan;
+        $penjualan->tanggal_penjualan = $request->tanggalPenjualan;
+        $penjualan->total_harga = $request->totalHarga;
+        $penjualan->save();
         return redirect()->back()->with('message', 'Berhasil Di Masukan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Pelanggan $pelanggan)
+    public function show(Penjualan $penjualan)
     {
-        $pelanggan = Pelanggan::all();
-        return inertia::render('Admin/Pelanggan', [
-            'pelanggan' => $pelanggan,
+        $penjualan = Penjualan::all();
+        return inertia::render('Admin/Penjualan', [
+            'penjualan' => $penjualan,
             'assetUrl' => asset(''),
         ]);
     }
@@ -60,7 +60,7 @@ class PelangganAdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pelanggan $produk)
+    public function edit(Penjualan $produk)
     {
         //
     }
@@ -68,7 +68,7 @@ class PelangganAdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pelanggan $produk)
+    public function update(Request $request, Penjualan $produk)
     {
         //
     }
@@ -76,7 +76,7 @@ class PelangganAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pelanggan $produk)
+    public function destroy(Penjualan $produk)
     {
         //
     }

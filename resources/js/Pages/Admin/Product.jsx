@@ -11,36 +11,42 @@ export default function Product(props) {
             <NavbarAdmin />
             <NavDashboardLayout>
                 <div className="w-full bg-gray-50 p-4 rounded-xl">
-                    <div className="flex flex-row justify-between items-center mb-4">
-                        {/* The button to open modal */}
-                        <label
-                            htmlFor="my_modal_7"
-                            className="btn btn-primary text-lg"
-                        >
-                            Input Produk
-                        </label>
-
-                        {/* Put this part before </body> tag */}
-                        <input
-                            type="checkbox"
-                            id="my_modal_7"
-                            className="modal-toggle"
-                        />
-                        <div className="modal backdrop-blur-sm " role="dialog">
-                            <div className="modal-box w-11/12 max-w-5xl white">
-                                <FormInputProduct value={props} />
-                            </div>
+                    <div className="flex flex-col p-2 gap-2 mb-4">
+                        <div>
+                            <p className="text-lg font-semibold text-center">
+                                Data Product
+                            </p>
+                        </div>
+                        <div>
+                            {/* The button to open modal */}
                             <label
-                                className="modal-backdrop"
                                 htmlFor="my_modal_7"
+                                className="btn btn-sm btn-primary"
                             >
-                                Close
+                                Input Produk
                             </label>
-                        </div>
-                        <div className="p-6">
-                            <p>Data Product</p>
-                        </div>
 
+                            {/* Put this part before </body> tag */}
+                            <input
+                                type="checkbox"
+                                id="my_modal_7"
+                                className="modal-toggle"
+                            />
+                            <div
+                                className="modal backdrop-blur-sm "
+                                role="dialog"
+                            >
+                                <div className="modal-box w-11/12 max-w-5xl white">
+                                    <FormInputProduct value={props} />
+                                </div>
+                                <label
+                                    className="modal-backdrop"
+                                    htmlFor="my_modal_7"
+                                >
+                                    Close
+                                </label>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="overflow-x-auto">

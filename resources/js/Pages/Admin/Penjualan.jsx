@@ -1,20 +1,20 @@
 import { Head } from "@inertiajs/react";
 import NavbarAdmin from "@/Components/NavbarAdmin";
 import NavDashboardLayout from "@/Layouts/NavDashboardLayout";
-import FormInputPelanggan from "@/Layouts/FormInputPelanggan";
+import FormInputPenjualan from "@/Layouts/FormInputPenjualan";
 
 export default function Pelanggan(props) {
-    const { pelanggan } = props;
+    const { penjualan } = props;
     return (
         <div>
-            <Head title="Pelanggan" />
+            <Head title="Penjualan" />
             <NavbarAdmin />
             <NavDashboardLayout>
                 <div className="w-full bg-gray-50 p-4 rounded-xl">
                     <div className="flex p-2 gap-2 flex-col mb-4">
                         <div>
                             <p className="text-lg font-semibold text-center">
-                                Data Pelanggan
+                                Data Penjualan
                             </p>
                         </div>
                         <div>
@@ -23,7 +23,7 @@ export default function Pelanggan(props) {
                                 htmlFor="my_modal_7"
                                 className="btn btn-sm btn-primary "
                             >
-                                Input Pelanggan
+                                Input Penjualan
                             </label>
 
                             {/* Put this part before </body> tag */}
@@ -37,7 +37,7 @@ export default function Pelanggan(props) {
                                 role="dialog"
                             >
                                 <div className="modal-box w-11/12 max-w-5xl white">
-                                    <FormInputPelanggan value={props} />
+                                    <FormInputPenjualan />
                                 </div>
                                 <label
                                     className="modal-backdrop"
@@ -53,22 +53,28 @@ export default function Pelanggan(props) {
                         <table className="table">
                             <thead>
                                 <tr>
+                                    <th>ID Penjualan</th>
                                     <th>ID Pelanggan</th>
-                                    <th>Nama Pelanggan</th>
-                                    <th>Alamat</th>
-                                    <th>No Telepon</th>
+                                    <th>Tanggal Jual</th>
+                                    <th>Total Harga</th>
+                                    <th>Detail</th>
                                     <th>Edit</th>
                                     <th>Hapus</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {pelanggan.map((data, i) => {
+                                {penjualan.map((data, i) => {
                                     return (
                                         <tr key={i}>
+                                            <td>{data.id_penjualan}</td>
                                             <td>{data.id_pelanggan}</td>
-                                            <td>{data.nama_pelanggan}</td>
-                                            <td>{data.alamat}</td>
-                                            <td>{data.nomor_telepon}</td>
+                                            <td>{data.tanggal_penjualan}</td>
+                                            <td>{data.total_harga}</td>
+                                            <td>
+                                                <button className="btn btn-sm btn-neutral text-white">
+                                                    Detail
+                                                </button>
+                                            </td>
                                             <td>
                                                 <button className="btn btn-sm btn-info text-white">
                                                     Edit
