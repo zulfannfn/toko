@@ -3,6 +3,7 @@ import NavbarAdmin from "@/Components/NavbarAdmin";
 import NavDashboardLayout from "@/Layouts/NavDashboardLayout";
 
 export default function Dashboard({ auth }) {
+    console.log(auth);
     return (
         <div>
             <Head title="Dasboard" />

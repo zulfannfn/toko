@@ -17,7 +17,7 @@ class PelangganAdminController extends Controller
     public function index()
     {
         $pelanggan = Pelanggan::all();
-        return inertia::render('Admin/Pelanggan', [
+        return inertia::render('Admin/Penjualan', [
             'pelanggan' => $pelanggan,
             'assetUrl' => asset(''),
         ]);
@@ -31,7 +31,14 @@ class PelangganAdminController extends Controller
         //
     }
 
-    /**
+    /**public function show(Pelanggan $pelanggan)
+    {
+        $pelanggan = Pelanggan::all();
+        return inertia::render('Admin/Pelanggan', [
+            'pelanggan' => $pelanggan,
+            'assetUrl' => asset(''),
+        ]);
+    }
      * Store a newly created resource in storage.
      */
     public function store(Request $request)

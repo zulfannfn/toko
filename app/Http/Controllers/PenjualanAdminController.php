@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Penjualan;
+use App\Models\Pelanggan;
+use App\Models\produk;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -50,9 +52,13 @@ class PenjualanAdminController extends Controller
      */
     public function show(Penjualan $penjualan)
     {
+        $pelanggan = Pelanggan::all();
         $penjualan = Penjualan::all();
+        $produk = produk::all();
         return inertia::render('Admin/Penjualan', [
             'penjualan' => $penjualan,
+            'pelanggan' => $pelanggan,
+            'produk' => $produk,
             'assetUrl' => asset(''),
         ]);
     }

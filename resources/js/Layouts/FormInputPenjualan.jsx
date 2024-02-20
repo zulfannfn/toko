@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 
 const FormInputPenjualan = (props) => {
+    const { penjualan, pelanggan, produk } = props;
     const [idPenjualan, setIdPenjualan] = useState(0);
     const [idPelanggan, setIdPelanggan] = useState(0);
     const [tanggalPenjualan, setTanggalPenjualan] = useState("");
@@ -22,7 +23,6 @@ const FormInputPenjualan = (props) => {
         };
         setNotif(true);
         Inertia.post("/admin/penjualan", data);
-        console.log(data);
     };
 
     return (
@@ -38,23 +38,25 @@ const FormInputPenjualan = (props) => {
                             placeholder="Penjualan ID"
                             name="id_penjualan"
                             value={idPenjualan}
-                            onChange={(idPenjualan) =>
-                                setIdPenjualan(idPenjualan.target.value)
-                            }
+                            onChange={(e) => setIdPenjualan(e.target.value)}
                             className="input input-bordered w-full "
                             required
                         />
-                        <input
-                            type="text"
-                            placeholder="Pelanggan ID"
+                        <select
+                            className="select select-bordered w-full max-full"
                             name="id_pelanggan"
-                            value={idPelanggan}
-                            onChange={(idPelanggan) =>
-                                setIdPelanggan(idPelanggan.target.value)
-                            }
-                            className="input input-bordered w-full "
-                            required
-                        />
+                            onChange={(e) => setIdPelanggan(e.target.value)}
+                        >
+                            <option value={idPelanggan}>ID Pelanggan</option>
+                            {pelanggan.map((data, i) => {
+                                return (
+                                    <option key={i} value={data.id_pelanggan}>
+                                        {data.id_pelanggan} |{" "}
+                                        {data.nama_pelanggan}
+                                    </option>
+                                );
+                            })}
+                        </select>
                     </div>
                     <div className="flex flex-col gap-2 w-full">
                         <input

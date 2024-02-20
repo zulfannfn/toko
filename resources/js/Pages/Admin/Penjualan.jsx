@@ -4,7 +4,8 @@ import NavDashboardLayout from "@/Layouts/NavDashboardLayout";
 import FormInputPenjualan from "@/Layouts/FormInputPenjualan";
 
 export default function Pelanggan(props) {
-    const { penjualan } = props;
+    const { penjualan, pelanggan, produk } = props;
+    console.log(produk);
     return (
         <div>
             <Head title="Penjualan" />
@@ -37,7 +38,10 @@ export default function Pelanggan(props) {
                                 role="dialog"
                             >
                                 <div className="modal-box w-11/12 max-w-5xl white">
-                                    <FormInputPenjualan />
+                                    <FormInputPenjualan
+                                        pelanggan={pelanggan}
+                                        penjualan={penjualan}
+                                    />
                                 </div>
                                 <label
                                     className="modal-backdrop"
