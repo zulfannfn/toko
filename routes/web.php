@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProdukAdminController;
 use App\Http\Controllers\PelangganAdminController;
@@ -68,6 +69,7 @@ Route::get('/admin/pelanggan', [PelangganAdminController::class, 'show'])->name(
 Route::post('/admin/penjualan', [PenjualanAdminController::class, 'store'])->middleware(['auth:admin', 'verified']);
 Route::get('/admin/penjualan', [PenjualanAdminController::class, 'show'])->name('admin.penjualan');
 
+Route::get('/admin/dashboard', [DashboardController::class, 'show'])->name('admin.dashboard');
 Route::get('/admin/dashboard', function () {
     return inertia::render('Admin/Dashboard');
 })->middleware(['auth:admin', 'verified'])->name('admin/dashboard');

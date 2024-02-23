@@ -37,7 +37,7 @@ export default function Pelanggan(props) {
                                 role="dialog"
                             >
                                 <div className="modal-box w-11/12 max-w-5xl white">
-                                    <FormInputPelanggan value={props} />
+                                    <FormInputPelanggan pelanggan={pelanggan} />
                                 </div>
                                 <label
                                     className="modal-backdrop"

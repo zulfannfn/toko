@@ -2,8 +2,9 @@ import { Head } from "@inertiajs/react";
 import NavbarAdmin from "@/Components/NavbarAdmin";
 import NavDashboardLayout from "@/Layouts/NavDashboardLayout";
 
-export default function Dashboard({ auth }) {
-    console.log(auth);
+export default function Dashboard(props) {
+    const { auth, pelanggan, penjualan,produk } = props
+    console.log(props);
     return (
         <div>
             <Head title="Dasboard" />

@@ -3,7 +3,8 @@ import { Inertia } from "@inertiajs/inertia";
 
 const FormInputPenjualan = (props) => {
     const { penjualan, pelanggan, produk } = props;
-    const [idPenjualan, setIdPenjualan] = useState(0);
+    const [idPenjualan, setIdPenjualan] = useState( penjualan.reduce((prev, current) => (current.id_penjualan > prev ? current.id_penjualan + 1 : prev), 0)
+        );
     const [idPelanggan, setIdPelanggan] = useState(0);
     const [tanggalPenjualan, setTanggalPenjualan] = useState("");
     const [totalHarga, setTotalHarga] = useState(0);
@@ -24,6 +25,8 @@ const FormInputPenjualan = (props) => {
         setNotif(true);
         Inertia.post("/admin/penjualan", data);
     };
+
+    console.log(props);
 
     return (
         <div>

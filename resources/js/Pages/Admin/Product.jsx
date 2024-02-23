@@ -37,7 +37,7 @@ export default function Product(props) {
                                 role="dialog"
                             >
                                 <div className="modal-box w-11/12 max-w-5xl white">
-                                    <FormInputProduct value={props} />
+                                    <FormInputProduct produk={produk} />
                                 </div>
                                 <label
                                     className="modal-backdrop"

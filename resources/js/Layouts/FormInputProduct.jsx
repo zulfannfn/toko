@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 
 const FormInputProduct = (props) => {
+    const {produk} = props
     const [foto, setfoto] = useState("");
-    const [produkId, setprodukId] = useState(0);
+    const [produkId, setprodukId] = useState( produk.reduce((prev, current) => (current.produk_id > prev ? current.produk_id + 1 : prev), 0)
+    );
     const [namaProduk, setnamaProduk] = useState("");
     const [harga, setharga] = useState(0);
     const [stock, setstock] = useState(0);

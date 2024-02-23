@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 
 const FormInputPelanggan = (props) => {
-    const [idPelanggan, setIdPelanggan] = useState(0);
+    const {pelanggan} = props
+    const [idPelanggan, setIdPelanggan] = useState(pelanggan.reduce((prev, current) => (current.id_pelanggan > prev ? current.id_pelanggan + 1 : prev), 0));
     const [namaPelanggan, setNamaPelanggan] = useState("");
     const [alamat, setAlamat] = useState("");
     const [nomorTelepon, setNomorTelepon] = useState(0);
