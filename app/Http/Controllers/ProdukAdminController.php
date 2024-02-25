@@ -65,9 +65,13 @@ class ProdukAdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(produk $produk)
+    public function edit(Produk $produk, Request $request)
     {
-        //
+        $produk = Produk::all();
+        return Inertia::render('Admin/Product', [
+            'produk' => $produk,
+            'produkEdit' => $produk->find($request->id)
+        ]);
     }
 
     /**

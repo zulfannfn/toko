@@ -60,13 +60,16 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 
-Route::post('/admin/product', [ProdukAdminController::class, 'store'])->middleware(['auth:admin', 'verified']);
+Route::post('/admin/product', [ProdukAdminController::class, 'store'])->middleware(['auth:admin', 'verified'])->name('admin.create.product');
 Route::get('/admin/product', [ProdukAdminController::class, 'show'])->name('admin.product');
+Route::get('/admin/product/edit', [ProdukAdminController::class, 'edit'])->middleware(['auth:admin', 'verified'])->name('admin.edit.product');
+Route::post('/admin/product/update', [ProdukAdminController::class, 'update'])->middleware(['auth:admin', 'verified'])->name('admin.update.product');
 
-Route::post('/admin/pelanggan', [PelangganAdminController::class, 'store'])->middleware(['auth:admin', 'verified']);
+
+Route::post('/admin/pelanggan', [PelangganAdminController::class, 'store'])->middleware(['auth:admin', 'verified'])->name('admin.create.pelanggan');
 Route::get('/admin/pelanggan', [PelangganAdminController::class, 'show'])->name('admin.pelanggan');
 
-Route::post('/admin/penjualan', [PenjualanAdminController::class, 'store'])->middleware(['auth:admin', 'verified']);
+Route::post('/admin/penjualan', [PenjualanAdminController::class, 'store'])->middleware(['auth:admin', 'verified'])->name('admin.create.penjualan');
 Route::get('/admin/penjualan', [PenjualanAdminController::class, 'show'])->name('admin.penjualan');
 
 Route::get('/admin/dashboard', [DashboardController::class, 'show'])->name('admin.dashboard');

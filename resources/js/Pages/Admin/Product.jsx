@@ -1,10 +1,11 @@
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 import NavbarAdmin from "@/Components/NavbarAdmin";
 import NavDashboardLayout from "@/Layouts/NavDashboardLayout";
 import FormInputProduct from "@/Layouts/FormInputProduct";
 
 export default function Product(props) {
     const { produk } = props;
+    console.log(props);
     return (
         <div>
             <Head title="Product" />
@@ -78,9 +79,45 @@ export default function Product(props) {
                                             <td>{data.warna}</td>
                                             <td>{data.deskripsi}</td>
                                             <td>
-                                                <button className="btn btn-sm btn-info text-white">
-                                                    Edit
-                                                </button>
+                                                <div>
+                                                    {/* The button to open modal */}
+                                                    <Link
+                                                        htmlFor="my_modal_7"
+                                                        href={route(
+                                                            "admin.edit.product"
+                                                        )}
+                                                        as="button"
+                                                        method="get"
+                                                        data={{
+                                                            id: data.produk_id,
+                                                        }}
+                                                    >
+                                                        Edit
+                                                    </Link>
+
+                                                    {/* Put this part before </body> tag */}
+                                                    <input
+                                                        type="checkbox"
+                                                        id="my_modal_7"
+                                                        className="modal-toggle"
+                                                    />
+                                                    <div
+                                                        className="modal backdrop-blur-sm "
+                                                        role="dialog"
+                                                    >
+                                                        <div className="modal-box w-11/12 max-w-5xl white">
+                                                            <FormInputProduct
+                                                                produk={produk}
+                                                            />
+                                                        </div>
+                                                        <label
+                                                            className="modal-backdrop"
+                                                            htmlFor="my_modal_7"
+                                                        >
+                                                            Close
+                                                        </label>
+                                                    </div>
+                                                </div>
                                             </td>
                                             <td>
                                                 <button className="btn btn-sm btn-error text-white">
