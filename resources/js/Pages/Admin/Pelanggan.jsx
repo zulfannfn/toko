@@ -2,6 +2,8 @@ import { Head } from "@inertiajs/react";
 import NavbarAdmin from "@/Components/NavbarAdmin";
 import NavDashboardLayout from "@/Layouts/NavDashboardLayout";
 import FormInputPelanggan from "@/Layouts/FormInputPelanggan";
+import { IoSearch } from "react-icons/io5";
+
 
 export default function Pelanggan(props) {
     const { pelanggan } = props;
@@ -11,39 +13,47 @@ export default function Pelanggan(props) {
             <NavbarAdmin />
             <NavDashboardLayout>
                 <div className="w-full bg-gray-50 p-4 rounded-xl">
-                    <div className="flex p-2 gap-2 flex-col mb-4">
+                    <div className="flex flex-col p-2 gap-2 mb-4">
                         <div>
                             <p className="text-lg font-semibold text-center">
                                 Data Pelanggan
                             </p>
                         </div>
-                        <div>
-                            {/* The button to open modal */}
-                            <label
-                                htmlFor="my_modal_7"
-                                className="btn btn-sm btn-primary "
-                            >
-                                Input Pelanggan
-                            </label>
-
-                            {/* Put this part before </body> tag */}
-                            <input
-                                type="checkbox"
-                                id="my_modal_7"
-                                className="modal-toggle"
-                            />
-                            <div
-                                className="modal backdrop-blur-sm "
-                                role="dialog"
-                            >
-                                <div className="modal-box w-11/12 max-w-5xl white">
-                                    <FormInputPelanggan pelanggan={pelanggan} />
-                                </div>
+                        <div className="flex flex-row justify-center gap-4">
+                            <div className="">
+                                {/* The button to open modal */}
                                 <label
-                                    className="modal-backdrop"
                                     htmlFor="my_modal_7"
+                                    className="btn btn-primary"
                                 >
-                                    Close
+                                    Input Pelanggan
+                                </label>
+
+                                {/* Put this part before </body> tag */}
+                                <input
+                                    type="checkbox"
+                                    id="my_modal_7"
+                                    className="modal-toggle"
+                                />
+                                <div
+                                    className="modal backdrop-blur-sm "
+                                    role="dialog"
+                                >
+                                    <div className="modal-box w-11/12 max-w-5xl white">
+                                        <FormInputPelanggan pelanggan={pelanggan} />
+                                    </div>
+                                    <label
+                                        className="modal-backdrop"
+                                        htmlFor="my_modal_7"
+                                    >
+                                        Close
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="flex flex-row w-[40%]">
+                                <label className="input input-bordered flex items-center gap-2 w-full">
+                                    <input type="text" className="grow border-none outline-none block w-full border border-slate-300 rounded-md py-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-0 sm:text-sm" placeholder="Cari" />
+                                    <IoSearch />
                                 </label>
                             </div>
                         </div>

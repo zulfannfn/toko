@@ -49,7 +49,7 @@ const FormInputProduct = (props) => {
     return (
         <div>
             <div className="mb-2">
-                <p>Input Product</p>
+                <p className="text-center font-bold">Input Product</p>
             </div>
             <form className="flex flex-col gap-2 p-4 rounded-lg mb-2 ">
                 <div className="flex flex-row gap-2">

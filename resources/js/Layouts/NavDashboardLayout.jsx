@@ -1,23 +1,27 @@
 import { Link } from "@inertiajs/react";
+import { MdSpaceDashboard } from "react-icons/md";
+import { IoMdCart } from "react-icons/io";
+import { FaUser } from "react-icons/fa";
+import { GrTransaction } from "react-icons/gr";
 
 export default function NavDashboardLayout({ children }) {
     return (
-        <div className="flex flex-row p-6">
+        <div className="flex flex-row px-6 ">
             <div>
-                <ul className="menu bg-base-200 w-56 rounded-box">
+                <ul className="menu bg-slate-50 w-56 rounded-box font-semibold">
                     <li>
-                        <Link href={route("admin/dashboard")}>Dashboard</Link>
+                        <Link href={route("admin/dashboard")}>Dashboard<MdSpaceDashboard/> </Link>
                     </li>
                     <li>
-                        <Link href={route("admin.product")}>Product</Link>
+                        <Link href={route("admin.product")}>Product<IoMdCart /></Link>
                     </li>
                     <li>
-                        <Link href={route("admin.pelanggan")}>Pelanggan</Link>
+                        <Link href={route("admin.pelanggan")}>Pelanggan<FaUser /></Link>
                     </li>
 
                     <li>
                         <details open>
-                            <summary>Transaksi</summary>
+                            <summary>Transaksi<GrTransaction /></summary>
                             <ul>
                                 <li>
                                     <Link href={route("admin.penjualan")}>
