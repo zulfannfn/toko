@@ -10,18 +10,30 @@ export default function NavDashboardLayout({ children }) {
             <div>
                 <ul className="menu bg-slate-50 w-56 rounded-box font-semibold">
                     <li>
-                        <Link href={route("admin/dashboard")}>Dashboard<MdSpaceDashboard/> </Link>
+                        <Link href={route("admin/dashboard")}>
+                            <MdSpaceDashboard />
+                            Dashboard
+                        </Link>
                     </li>
                     <li>
-                        <Link href={route("admin.product")}>Product<IoMdCart /></Link>
+                        <Link href={route("admin.product")}>
+                            <IoMdCart />
+                            Product
+                        </Link>
                     </li>
                     <li>
-                        <Link href={route("admin.pelanggan")}>Pelanggan<FaUser /></Link>
+                        <Link href={route("admin.pelanggan")}>
+                            <FaUser />
+                            Pelanggan
+                        </Link>
                     </li>
 
                     <li>
                         <details open>
-                            <summary>Transaksi<GrTransaction /></summary>
+                            <summary>
+                                <GrTransaction />
+                                Transaksi
+                            </summary>
                             <ul>
                                 <li>
                                     <Link href={route("admin.penjualan")}>

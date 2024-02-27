@@ -6,7 +6,6 @@ import { IoSearch } from "react-icons/io5";
 
 export default function Product(props) {
     const { produk } = props;
-    console.log(props);
     return (
         <div>
             <Head title="Product" />
@@ -52,7 +51,11 @@ export default function Product(props) {
                             </div>
                             <div className="flex flex-row w-[40%]">
                                 <label className="input input-bordered flex items-center gap-2 w-full">
-                                    <input type="text" className="grow border-none outline-none block w-full border border-slate-300 rounded-md py-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-0 sm:text-sm" placeholder="Cari" />
+                                    <input
+                                        type="text"
+                                        className="grow border-none outline-none block w-full border border-slate-300 rounded-md py-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-0 sm:text-sm"
+                                        placeholder="Cari"
+                                    />
                                     <IoSearch />
                                 </label>
                             </div>

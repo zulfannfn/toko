@@ -3,27 +3,40 @@ import NavbarAdmin from "@/Components/NavbarAdmin";
 import NavDashboardLayout from "@/Layouts/NavDashboardLayout";
 import FormInputPenjualan from "@/Layouts/FormInputPenjualan";
 import { IoSearch } from "react-icons/io5";
-
+import { useEffect, useState } from "react";
 
 export default function Pelanggan(props) {
     const { penjualan, pelanggan, produk } = props;
+    const [dataPenjualan, setDataPenjualan] = useState(null);
+
+    const handlePenjualanSubmit = (e, data) => {
+        e.preventDefault();
+        setDataPenjualan(data);
+    };
+
+    // Mengambil data penjualan terbaru dari prop penjualan
+    useEffect(() => {
+        if (penjualan.length > 0) {
+            const latestData = penjualan.slice(-1)[0];
+            setDataPenjualan(latestData);
+        }
+    }, [penjualan]);
+
+    console.log(dataPenjualan);
+
     return (
         <div>
             <Head title="Penjualan" />
             <NavbarAdmin />
             <NavDashboardLayout>
                 <div className="w-full px-4 rounded-xl">
-                    <div className="flex flex-row mb-4">
-                        <div className="w-[50%]">
-                            <FormInputPenjualan
-                                pelanggan={pelanggan}
-                                penjualan={penjualan}
-                                produk={produk}
-                            />
-                        </div>
-                        <div>
-                            Right
-                        </div>
+                    <div className="flex flex-row mb-4 gap-4 w-full ">
+                        <FormInputPenjualan
+                            onPenjualanSubmit={handlePenjualanSubmit}
+                            pelanggan={pelanggan}
+                            penjualan={penjualan}
+                            produk={produk}
+                        />
                     </div>
 
                     <div className="overflow-x-auto bg-slate-50 py-3 rounded-md">
@@ -62,12 +75,18 @@ export default function Pelanggan(props) {
                                     </div>
                                     <div className="flex flex-row w-[40%]">
                                         <label className="input input-bordered flex items-center gap-2 w-full">
-                                            <input type="text" className="grow border-none outline-none block w-full border border-slate-300 rounded-md py-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-0 sm:text-sm" placeholder="Cari" />
+                                            <input
+                                                type="text"
+                                                className="grow border-none outline-none block w-full border border-slate-300 rounded-md py-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-0 sm:text-sm"
+                                                placeholder="Cari"
+                                            />
                                             <IoSearch />
                                         </label>
                                     </div>
                                     <div>
-                                        <p className="px-4 font-bold">Data Penjualan</p>
+                                        <p className="px-4 font-bold">
+                                            History Data Penjualan
+                                        </p>
                                     </div>
                                 </div>
                             </div>
