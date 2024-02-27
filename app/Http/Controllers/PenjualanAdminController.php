@@ -41,6 +41,8 @@ class PenjualanAdminController extends Controller
         $penjualan = new Penjualan();
         $penjualan->id_penjualan = $request->idPenjualan;
         $penjualan->id_pelanggan = $request->idPelanggan;
+        $penjualan->produk_id = $request->idProduk;
+        $penjualan->jumlah = $request->jumlahProduk;
         $penjualan->tanggal_penjualan = $request->tanggalPenjualan;
         $penjualan->total_harga = $request->totalHarga;
         $penjualan->save();

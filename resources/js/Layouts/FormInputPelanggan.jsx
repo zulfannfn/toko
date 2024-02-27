@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 
 const FormInputPelanggan = (props) => {
-    const {pelanggan} = props
+    const { pelanggan } = props
     const [idPelanggan, setIdPelanggan] = useState(pelanggan.reduce((prev, current) => (current.id_pelanggan > prev ? current.id_pelanggan + 1 : prev), 0));
     const [namaPelanggan, setNamaPelanggan] = useState("");
     const [alamat, setAlamat] = useState("");
@@ -38,55 +38,73 @@ const FormInputPelanggan = (props) => {
             <form className="flex flex-col gap-2 p-4 rounded-lg mb-2 ">
                 <div className="flex flex-row gap-2">
                     <div className="flex flex-col gap-2 w-full">
-
-                        <input
-                            type="text"
-                            placeholder="Pelanggan ID"
-                            name="id_pelanggan"
-                            value={idPelanggan}
-                            onChange={(idPelanggan) =>
-                                setIdPelanggan(idPelanggan.target.value)
-                            }
-                            className="input input-bordered w-full "
-                            required
-                        />
-                        <input
-                            type="text"
-                            placeholder="Nama Pelanggan"
-                            name="nama_pelanggan"
-                            value={namaPelanggan}
-                            onChange={(namaPelanggan) =>
-                                setNamaPelanggan(namaPelanggan.target.value)
-                            }
-                            className="input input-bordered w-full "
-                            required
-                        />
+                        <label className="form-control w-full">
+                            <div className="label">
+                                <span className="label-text">ID Pelanggan</span>
+                            </div>
+                            <input
+                                type="text"
+                                placeholder="Pelanggan ID"
+                                name="id_pelanggan"
+                                value={idPelanggan}
+                                onChange={(idPelanggan) =>
+                                    setIdPelanggan(idPelanggan.target.value)
+                                }
+                                className="input input-bordered w-full "
+                                required
+                            />
+                        </label>
+                        <label className="form-control w-full">
+                            <div className="label">
+                                <span className="label-text">Nama Pelanggan</span>
+                            </div>
+                            <input
+                                type="text"
+                                placeholder="Nama Pelanggan"
+                                name="nama_pelanggan"
+                                value={namaPelanggan}
+                                onChange={(namaPelanggan) =>
+                                    setNamaPelanggan(namaPelanggan.target.value)
+                                }
+                                className="input input-bordered w-full "
+                                required
+                            />
+                        </label>
 
                     </div>
                     <div className="flex flex-col gap-2 w-full">
-                        <input
-                            type="text"
-                            placeholder="Alamat"
-                            name="alamat"
-                            value={alamat}
-                            onChange={(alamat) =>
-                                setAlamat(alamat.target.value)
-                            }
-                            className="input input-bordered w-full "
-                            required
-                        />
-                        <input
-                            type="text"
-                            placeholder="Nomor Telepon"
-                            name="nomor_telepon"
-                            value={nomorTelepon}
-                            onChange={(nomorTelepon) =>
-                                setNomorTelepon(nomorTelepon.target.value)
-                            }
-                            className="input input-bordered w-full "
-                            required
-                        />
-
+                        <label className="form-control w-full">
+                            <div className="label">
+                                <span className="label-text">Alamat</span>
+                            </div>
+                            <input
+                                type="text"
+                                placeholder="Alamat"
+                                name="alamat"
+                                value={alamat}
+                                onChange={(alamat) =>
+                                    setAlamat(alamat.target.value)
+                                }
+                                className="input input-bordered w-full "
+                                required
+                            />
+                        </label>
+                        <label className="form-control w-full">
+                            <div className="label">
+                                <span className="label-text">No telepon</span>
+                            </div>
+                            <input
+                                type="text"
+                                placeholder="Nomor Telepon"
+                                name="nomor_telepon"
+                                value={nomorTelepon}
+                                onChange={(nomorTelepon) =>
+                                    setNomorTelepon(nomorTelepon.target.value)
+                                }
+                                className="input input-bordered w-full "
+                                required
+                            />
+                        </label>
                     </div>
                 </div>
                 <div>

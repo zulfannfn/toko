@@ -5,7 +5,6 @@ import FormInputPenjualan from "@/Layouts/FormInputPenjualan";
 
 export default function Pelanggan(props) {
     const { penjualan, pelanggan, produk } = props;
-    console.log(produk);
     return (
         <div>
             <Head title="Penjualan" />
@@ -41,6 +40,7 @@ export default function Pelanggan(props) {
                                     <FormInputPenjualan
                                         pelanggan={pelanggan}
                                         penjualan={penjualan}
+                                        produk={produk}
                                     />
                                 </div>
                                 <label
@@ -59,10 +59,11 @@ export default function Pelanggan(props) {
                                 <tr>
                                     <th>ID Penjualan</th>
                                     <th>ID Pelanggan</th>
+                                    <th>ID Produk</th>
+                                    <th>Jumlah</th>
                                     <th>Tanggal Jual</th>
                                     <th>Total Harga</th>
                                     <th>Detail</th>
-                                    <th>Edit</th>
                                     <th>Hapus</th>
                                 </tr>
                             </thead>
@@ -72,6 +73,8 @@ export default function Pelanggan(props) {
                                         <tr key={i}>
                                             <td>{data.id_penjualan}</td>
                                             <td>{data.id_pelanggan}</td>
+                                            <td>{data.produk_id}</td>
+                                            <td>{data.jumlah}</td>
                                             <td>{data.tanggal_penjualan}</td>
                                             <td>{data.total_harga}</td>
                                             <td>
@@ -79,11 +82,7 @@ export default function Pelanggan(props) {
                                                     Detail
                                                 </button>
                                             </td>
-                                            <td>
-                                                <button className="btn btn-sm btn-info text-white">
-                                                    Edit
-                                                </button>
-                                            </td>
+                                            
                                             <td>
                                                 <button className="btn btn-sm btn-error text-white">
                                                     Hapus
