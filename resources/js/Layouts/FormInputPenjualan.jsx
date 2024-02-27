@@ -4,6 +4,7 @@ import FormInputPelanggan from "./FormInputPelanggan";
 import FormInputProduct from "./FormInputProduct";
 import { MdOutlineInput } from "react-icons/md";
 import { TbReportMoney } from "react-icons/tb";
+import { BsCalendar2Date } from "react-icons/bs";
 
 const FormInputPenjualan = (props) => {
     const { penjualan, pelanggan, produk } = props;
@@ -398,8 +399,10 @@ const FormInputPenjualan = (props) => {
                         <span className="text-slate-500">Nama :</span>{" "}
                         <span className="text-bold">{namaPelanggan}</span>
                     </p>
-                    <p>
-                        <span className="text-slate-500">Tanggal :</span>{" "}
+                    <p className="flex flex-row items-center gap-2">
+                        <span className="text-slate-500">
+                            <BsCalendar2Date />
+                        </span>{" "}
                         <span className="text-bold">{tanggalPenjualan}</span>
                     </p>
                 </div>
@@ -466,7 +469,7 @@ const FormInputPenjualan = (props) => {
                     <div className="flex flex-col items-end bg-white p-2 rounded-md">
                         <p>Kembali</p>
                         <p className="text-xl font-bold">
-                            {totalBayar <= bayar ? (
+                            {totalBayar < bayar ? (
                                 <span className="text-green-500">
                                     Rp.
                                     {bayar - totalBayar}

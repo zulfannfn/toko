@@ -4,6 +4,7 @@ import NavDashboardLayout from "@/Layouts/NavDashboardLayout";
 import FormInputPenjualan from "@/Layouts/FormInputPenjualan";
 import { IoSearch } from "react-icons/io5";
 import { useEffect, useState } from "react";
+import { FaHistory } from "react-icons/fa";
 
 export default function Pelanggan(props) {
     const { penjualan, pelanggan, produk } = props;
@@ -83,10 +84,11 @@ export default function Pelanggan(props) {
                                             <IoSearch />
                                         </label>
                                     </div>
-                                    <div>
+                                    <div className="flex flex-row items-center">
                                         <p className="px-4 font-bold">
                                             History Data Penjualan
                                         </p>
+                                        <FaHistory />
                                     </div>
                                 </div>
                             </div>
