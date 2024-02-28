@@ -3,14 +3,10 @@ import { Inertia } from "@inertiajs/inertia";
 
 const FormEditProduct = (props) => {
     const { produk } = props;
-    const [foto, setfoto] = useState("");
-    const [produkId, setprodukId] = useState(
-        produk.reduce(
-            (prev, current) =>
-                current.produk_id > prev ? current.produk_id + 1 : prev,
-            0
-        )
-    );
+
+    console.log(props);
+
+    const [produkId, setprodukId] = useState(0);
     const [namaProduk, setnamaProduk] = useState("");
     const [harga, setharga] = useState(0);
     const [stock, setstock] = useState(0);
@@ -22,7 +18,6 @@ const FormEditProduct = (props) => {
 
     const handelSubmit = () => {
         if (
-            !foto ||
             !produkId ||
             !namaProduk ||
             !harga ||
@@ -37,7 +32,7 @@ const FormEditProduct = (props) => {
         }
 
         const data = {
-            foto,
+            id: produk.id,
             produkId,
             namaProduk,
             harga,
@@ -48,26 +43,30 @@ const FormEditProduct = (props) => {
             deskripsi,
         };
         setNotif(true);
-        Inertia.post("/admin/product", data);
+        Inertia.post("/admin/product/update", data);
     };
 
     return (
-        <div>
-            <div className="mb-2">
-                <p>Input Product</p>
+        <div className="p-4 bg-slate-50 rounded-lg">
+            <div className="text-center">
+                <p>Edit Product</p>
             </div>
-            <form className="flex flex-col gap-2 p-4 rounded-lg mb-2 ">
+            <form className="flex flex-col gap-2 p-4 rounded-lg ">
                 <div className="flex flex-row gap-2">
                     <div className="flex flex-col gap-2 w-full">
                         <label className="form-control w-full">
                             <div className="label">
-                                <span className="label-text">ID Pelanggan</span>
+                                <span className="label-text">ID Produk</span>
                             </div>
                             <input
                                 type="text"
                                 placeholder="Product ID"
                                 name="product_id"
-                                value={produkId}
+                                defaultValue={
+                                    produk && produk.produk_id
+                                        ? produk.produk_id
+                                        : ""
+                                }
                                 onChange={(produkId) =>
                                     setprodukId(produkId.target.value)
                                 }
@@ -77,13 +76,17 @@ const FormEditProduct = (props) => {
                         </label>
                         <label className="form-control w-full">
                             <div className="label">
-                                <span className="label-text">ID Pelanggan</span>
+                                <span className="label-text">Nama Produk</span>
                             </div>
                             <input
                                 type="text"
                                 placeholder="Nama Product"
                                 name="nama_product"
-                                value={namaProduk}
+                                defaultValue={
+                                    produk && produk.nama_produk
+                                        ? produk.nama_produk
+                                        : ""
+                                }
                                 onChange={(namaProduk) =>
                                     setnamaProduk(namaProduk.target.value)
                                 }
@@ -91,25 +94,38 @@ const FormEditProduct = (props) => {
                                 required
                             />
                         </label>
-                        <input
-                            type="text"
-                            placeholder="Harga"
-                            name="harga"
-                            value={harga}
-                            onChange={(harga) => setharga(harga.target.value)}
-                            className="input input-bordered w-full "
-                            required
-                        />
                         <label className="form-control w-full">
                             <div className="label">
-                                <span className="label-text">ID Pelanggan</span>
+                                <span className="label-text">Harga</span>
+                            </div>
+                            <input
+                                type="text"
+                                placeholder="Harga"
+                                name="harga"
+                                defaultValue={
+                                    produk && produk.harga ? produk.harga : ""
+                                }
+                                onChange={(harga) =>
+                                    setharga(harga.target.value)
+                                }
+                                className="input input-bordered w-full "
+                                required
+                            />
+                        </label>
+                        <label className="form-control w-full">
+                            <div className="label">
+                                <span className="label-text">Stock</span>
                             </div>
                             <input
                                 type="text"
                                 placeholder="stock"
                                 name="stock"
-                                value={stock}
-                                onChange={(stock) => setstock(stock.target.value)}
+                                defaultValue={
+                                    produk && produk.stock ? produk.stock : ""
+                                }
+                                onChange={(stock) =>
+                                    setstock(stock.target.value)
+                                }
                                 className="input input-bordered w-full "
                                 required
                             />
@@ -118,13 +134,17 @@ const FormEditProduct = (props) => {
                     <div className="flex flex-col gap-2 w-full">
                         <label className="form-control w-full">
                             <div className="label">
-                                <span className="label-text">ID Pelanggan</span>
+                                <span className="label-text">Kategori</span>
                             </div>
                             <input
                                 type="text"
                                 placeholder="Kategori"
                                 name="kategori"
-                                value={kategori}
+                                defaultValue={
+                                    produk && produk.kategori
+                                        ? produk.kategori
+                                        : ""
+                                }
                                 onChange={(kategori) =>
                                     setkategori(kategori.target.value)
                                 }
@@ -134,13 +154,15 @@ const FormEditProduct = (props) => {
                         </label>
                         <label className="form-control w-full">
                             <div className="label">
-                                <span className="label-text">ID Pelanggan</span>
+                                <span className="label-text">Ukuran</span>
                             </div>
                             <input
                                 type="text"
                                 placeholder="Ukuran"
                                 name="ukuran"
-                                value={ukuran}
+                                defaultValue={
+                                    produk && produk.ukuran ? produk.ukuran : ""
+                                }
                                 onChange={(ukuran) =>
                                     setukuran(ukuran.target.value)
                                 }
@@ -150,27 +172,35 @@ const FormEditProduct = (props) => {
                         </label>
                         <label className="form-control w-full">
                             <div className="label">
-                                <span className="label-text">ID Pelanggan</span>
+                                <span className="label-text">Warna</span>
                             </div>
                             <input
                                 type="text"
                                 placeholder="Warna"
                                 name="warna"
-                                value={warna}
-                                onChange={(warna) => setwarna(warna.target.value)}
-                                className="input input-bordered w-full "
+                                defaultValue={
+                                    produk && produk.warna ? produk.warna : ""
+                                }
+                                onChange={(warna) =>
+                                    setwarna(warna.target.value)
+                                }
+                                className="input input-bordered w-full"
                                 required
                             />
                         </label>
                         <label className="form-control w-full">
                             <div className="label">
-                                <span className="label-text">ID Pelanggan</span>
+                                <span className="label-text">Deskripsi</span>
                             </div>
                             <input
                                 type="text"
                                 placeholder="Deskripsi"
                                 name="deskripsi"
-                                value={deskripsi}
+                                defaultValue={
+                                    produk && produk.deskripsi
+                                        ? produk.deskripsi
+                                        : ""
+                                }
                                 onChange={(deskripsi) =>
                                     setdeskripsi(deskripsi.target.value)
                                 }
@@ -180,23 +210,9 @@ const FormEditProduct = (props) => {
                         </label>
                     </div>
                 </div>
-                <div>
-                    <label className="form-control w-full">
-                        <div className="label">
-                            <span className="label-text">ID Pelanggan</span>
-                        </div>
-                        <input
-                            type="file"
-                            placeholder="Foto"
-                            name="foto"
-                            value={foto}
-                            onChange={(foto) => setfoto(foto.target.value)}
-                            className="file-input file-input-ghost w-full  input-bordered w-full mb-2"
-                            required
-                        />
-                    </label>
+                <div className="py-2 flex flex-row justify-end">
                     <button
-                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        className="btn hover:btn-primary"
                         onClick={() => handelSubmit()}
                     >
                         Sumbmit

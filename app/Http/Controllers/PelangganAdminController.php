@@ -83,8 +83,11 @@ class PelangganAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pelanggan $produk)
+    public function destroy(Pelanggan $pelanggan, Request $request)
     {
-        //
+        $id = $request->input('id');
+        $pelanggan = Pelanggan::where('id_pelanggan', $id);
+        $pelanggan->delete();
+        return redirect()->back()->with('message', 'Berhasil menghapus');
     }
 }

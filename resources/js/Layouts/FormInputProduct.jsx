@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 
 const FormInputProduct = (props) => {
-    const { produk } = props
+    const { produk } = props;
     const [foto, setfoto] = useState("");
-    const [produkId, setprodukId] = useState(produk.reduce((prev, current) => (current.produk_id > prev ? current.produk_id + 1 : prev), 0)
+    const [produkId, setprodukId] = useState(
+        produk.reduce(
+            (prev, current) =>
+                current.produk_id > prev ? current.produk_id + 1 : prev,
+            0
+        )
     );
     const [namaProduk, setnamaProduk] = useState("");
     const [harga, setharga] = useState(0);
@@ -84,7 +89,8 @@ const FormInputProduct = (props) => {
                                 }
                                 className="input input-bordered w-full "
                                 required
-                            /></label>
+                            />
+                        </label>
                         <label className="form-control w-full">
                             <div className="label">
                                 <span className="label-text">Harga Produk</span>
@@ -94,7 +100,9 @@ const FormInputProduct = (props) => {
                                 placeholder="Harga"
                                 name="harga"
                                 value={harga}
-                                onChange={(harga) => setharga(harga.target.value)}
+                                onChange={(harga) =>
+                                    setharga(harga.target.value)
+                                }
                                 className="input input-bordered w-full "
                                 required
                             />
@@ -108,7 +116,9 @@ const FormInputProduct = (props) => {
                                 placeholder="stock"
                                 name="stock"
                                 value={stock}
-                                onChange={(stock) => setstock(stock.target.value)}
+                                onChange={(stock) =>
+                                    setstock(stock.target.value)
+                                }
                                 className="input input-bordered w-full "
                                 required
                             />
@@ -140,7 +150,9 @@ const FormInputProduct = (props) => {
                                 placeholder="Ukuran"
                                 name="ukuran"
                                 value={ukuran}
-                                onChange={(ukuran) => setukuran(ukuran.target.value)}
+                                onChange={(ukuran) =>
+                                    setukuran(ukuran.target.value)
+                                }
                                 className="input input-bordered w-full "
                                 required
                             />
@@ -154,7 +166,9 @@ const FormInputProduct = (props) => {
                                 placeholder="Warna"
                                 name="warna"
                                 value={warna}
-                                onChange={(warna) => setwarna(warna.target.value)}
+                                onChange={(warna) =>
+                                    setwarna(warna.target.value)
+                                }
                                 className="input input-bordered w-full "
                                 required
                             />

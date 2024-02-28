@@ -65,10 +65,12 @@ Route::post('/admin/product', [ProdukAdminController::class, 'store'])->middlewa
 Route::get('/admin/product', [ProdukAdminController::class, 'show'])->name('admin.product');
 Route::get('/admin/product/edit', [ProdukAdminController::class, 'edit'])->middleware(['auth:admin', 'verified'])->name('admin.edit.product');
 Route::post('/admin/product/update', [ProdukAdminController::class, 'update'])->middleware(['auth:admin', 'verified'])->name('admin.update.product');
-
+Route::post('/admin/product/destroy', [ProdukAdminController::class, 'destroy'])->middleware(['auth:admin', 'verified'])->name('admin.delete.product');
 
 Route::post('/admin/pelanggan', [PelangganAdminController::class, 'store'])->middleware(['auth:admin', 'verified'])->name('admin.create.pelanggan');
 Route::get('/admin/pelanggan', [PelangganAdminController::class, 'show'])->name('admin.pelanggan');
+Route::post('/admin/pelanggan/destroy', [PelangganAdminController::class, 'destroy'])->middleware(['auth:admin', 'verified'])->name('admin.delete.pelanggan');
+
 
 Route::post('/admin/penjualan', [PenjualanAdminController::class, 'store'])->middleware(['auth:admin', 'verified'])->name('admin.create.penjualan');
 Route::get('/admin/penjualan', [PenjualanAdminController::class, 'show'])->name('admin.penjualan');

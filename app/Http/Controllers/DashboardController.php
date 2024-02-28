@@ -42,13 +42,12 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Dashboard $dashboard)
+    public function show()
     {
         $pelanggan = Pelanggan::all();
         $penjualan = Penjualan::all();
@@ -64,7 +63,7 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Dashboard $dashboard)
+    public function edit()
     {
         //
     }
@@ -72,7 +71,7 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Dashboard $dashboard)
+    public function update()
     {
         //
     }
@@ -80,7 +79,7 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Dashboard $dashboard)
+    public function destroy()
     {
         //
     }

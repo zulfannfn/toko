@@ -3,7 +3,7 @@ import NavbarAdmin from "@/Components/NavbarAdmin";
 import NavDashboardLayout from "@/Layouts/NavDashboardLayout";
 
 export default function Dashboard(props) {
-    const { auth, pelanggan, penjualan, produk } = props
+    const { auth, pelanggan, penjualan, produk } = props;
     console.log(props);
     return (
         <div>
@@ -14,21 +14,30 @@ export default function Dashboard(props) {
                     <div>
                         <div className="stats bg-blue-300 text-primary-content">
                             <div className="stat">
-                                <div className="stat-title">Account balance</div>
+                                <div className="stat-title">
+                                    Account balance
+                                </div>
                                 <div className="stat-value">$89,400</div>
                                 <div className="stat-actions">
-                                    <button className="btn btn-sm btn-success">Add funds</button>
+                                    <button className="btn btn-sm btn-success">
+                                        Add funds
+                                    </button>
                                 </div>
                             </div>
                             <div className="stat">
-                                <div className="stat-title">Current balance</div>
+                                <div className="stat-title">
+                                    Current balance
+                                </div>
                                 <div className="stat-value">$89,400</div>
                                 <div className="stat-actions">
-                                    <button className="btn btn-sm">Withdrawal</button>
-                                    <button className="btn btn-sm">deposit</button>
+                                    <button className="btn btn-sm">
+                                        Withdrawal
+                                    </button>
+                                    <button className="btn btn-sm">
+                                        deposit
+                                    </button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div>
@@ -50,7 +59,9 @@ export default function Dashboard(props) {
                                     </svg>
                                 </div>
                                 <div className="stat-title">Total Likes</div>
-                                <div className="stat-value text-primary">25.6K</div>
+                                <div className="stat-value text-primary">
+                                    25.6K
+                                </div>
                                 <div className="stat-desc">
                                     21% more than last month
                                 </div>
@@ -97,35 +108,7 @@ export default function Dashboard(props) {
                             </div>
                         </div>
                     </div>
-                    <div>
-                    <div className="collapse collapse-arrow bg-base-200">
-                        <input type="radio" name="my-accordion-2" defaultChecked />
-                        <div className="collapse-title text-xl font-medium">
-                            Click to open this one and close others
-                        </div>
-                        <div className="collapse-content">
-                            <p>hello</p>
-                        </div>
-                    </div>
-                    <div className="collapse collapse-arrow bg-base-200">
-                        <input type="radio" name="my-accordion-2" />
-                        <div className="collapse-title text-xl font-medium">
-                            Click to open this one and close others
-                        </div>
-                        <div className="collapse-content">
-                            <p>hello</p>
-                        </div>
-                    </div><font></font>
-                    <div className="collapse collapse-arrow bg-base-200">
-                        <input type="radio" name="my-accordion-2" />
-                        <div className="collapse-title text-xl font-medium">
-                            Click to open this one and close others
-                        </div>
-                        <div className="collapse-content">
-                            <p>hello</p>
-                        </div>
-                    </div>
-                    </div>
+                    <div></div>
                 </div>
             </NavDashboardLayout>
         </div>

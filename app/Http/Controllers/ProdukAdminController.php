@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\produk;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Redirect;
+
 
 
 class ProdukAdminController extends Controller
@@ -67,26 +69,45 @@ class ProdukAdminController extends Controller
      */
     public function edit(Produk $produk, Request $request)
     {
-        $produk = Produk::all();
-        return Inertia::render('Admin/Product', [
-            'produk' => $produk,
-            'produkEdit' => $produk->find($request->id)
+        $id = $request->query('id');
+        $produk = Produk::where('produk_id', $id)->first();
+
+        if (!$produk) {
+        };
+
+        return Inertia::render('Admin/ProductEdit', [
+            'idproduk' => $produk,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, produk $produk)
+    public function update(Request $request)
     {
-        //
-    }
+        $produk = Produk::findOrFail($request->id);
 
+        produk::where('id', $request->id)->update([
+            'produk_id' => $request->produkId,
+            'nama_produk' => $request->namaProduk,
+            'harga' => $request->harga,
+            'stock' => $request->stock,
+            'kategori' => $request->kategori,
+            'ukuran' => $request->ukuran,
+            'warna' => $request->warna,
+            'deskripsi' => $request->deskripsi,
+        ]);
+        return redirect()->back()->with('message', 'Berhasil menghapus');
+    }
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(produk $produk)
+    public function destroy(Produk $produk, Request $request)
     {
-        //
+        $id = $request->input('id');
+        $produk = Produk::where('produk_id', $id)->first();
+        $produk->delete();
+
+        return redirect()->back()->with('message', 'Berhasil menghapus');
     }
 }

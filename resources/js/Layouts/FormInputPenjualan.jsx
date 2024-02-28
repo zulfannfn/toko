@@ -8,7 +8,6 @@ import { TbReportMoney } from "react-icons/tb";
 import { BsCalendar2Date } from "react-icons/bs";
 import { FaPrint } from "react-icons/fa";
 
-
 const FormInputPenjualan = (props) => {
     const { penjualan, pelanggan, produk } = props;
 
@@ -121,7 +120,7 @@ const FormInputPenjualan = (props) => {
         setProductsToAdd((prevProducts) => [...prevProducts, data]);
     };
 
-    const handelSubmit =  (event) => {
+    const handelSubmit = (event) => {
         event.preventDefault();
 
         if (
@@ -146,7 +145,6 @@ const FormInputPenjualan = (props) => {
         };
         setNotif(true);
 
-
         props.onPenjualanSubmit(event, data);
         Inertia.post("/admin/penjualan", data);
     };
@@ -155,7 +153,9 @@ const FormInputPenjualan = (props) => {
         <div className="flex flex-row w-full gap-4">
             <div className="bg-slate-50 w-[50%] px-4 py-3 rounded-md">
                 <div>
-                    <p className="font-bold text-center">Penjualan</p>
+                    <p className="font-bold text-center text-lg p-1 bg-white rounded-lg">
+                        Penjualan
+                    </p>
                 </div>
                 <form className="flex flex-col gap-2 rounded-lg mb-2 ">
                     <div className="flex flex-row gap-2">
@@ -365,13 +365,13 @@ const FormInputPenjualan = (props) => {
                     <div className="flex gap-2 justify-end py-2">
                         <button
                             onClick={handelTampungData}
-                            className="font-extrabold text-black btn bg-blue-100 hover:text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            className="font-extrabold text-black btn bg-blue-100 hover:text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
                             Masukan
                         </button>
                         <button
                             onClick={handelSubmit}
-                            className="font-extrabold text-black btn bg-blue-100 hover:text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            className="font-extrabold text-black btn bg-blue-100 hover:text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
                             Sumbmit
                         </button>
@@ -379,10 +379,12 @@ const FormInputPenjualan = (props) => {
                 </form>
             </div>
 
-            <div className="w-[50%] px-4 rounded-xl print-nota" >
-                <p className="py-2 text-center font-semibold bg-slate-50 rounded-t-lg">
-                    Pembelian Produk
-                </p>
+            <div className="w-[50%] px-4 rounded-xl print-nota">
+                <div className="p-3 bg-slate-50">
+                    <p className="font-bold text-center text-lg p-1 bg-white rounded-t-lg">
+                        Pembelian Produk
+                    </p>
+                </div>
                 <div className="p-4 bg-slate-50 rounded-md flex flex-row justify-between">
                     <p>
                         <span className="text-slate-500">ID Penjualan :</span>{" "}
@@ -460,18 +462,22 @@ const FormInputPenjualan = (props) => {
                         <div>
                             {/* The button to open modal */}
 
-                            {totalBayar < bayar ? (
-                                <label htmlFor="my_modal_9" className="btn text-lg">
+                            {totalBayar ? (
+                                <label
+                                    htmlFor="my_modal_9"
+                                    className="btn text-lg"
+                                >
                                     <FaPrint />
                                 </label>
-
                             ) : (
-                                <label>
-                                </label>
-
+                                <label></label>
                             )}
                             {/* Put this part before </body> tag */}
-                            <input type="checkbox" id="my_modal_9" className="modal-toggle" />
+                            <input
+                                type="checkbox"
+                                id="my_modal_9"
+                                className="modal-toggle"
+                            />
                             <div className="modal" role="dialog">
                                 <div className="modal-box w-11/12 max-w-5xl">
                                     <p className="py-4">
@@ -486,7 +492,12 @@ const FormInputPenjualan = (props) => {
                                         />
                                     </p>
                                 </div>
-                                <label className="modal-backdrop" htmlFor="my_modal_9">Close</label>
+                                <label
+                                    className="modal-backdrop"
+                                    htmlFor="my_modal_9"
+                                >
+                                    Close
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -495,37 +506,41 @@ const FormInputPenjualan = (props) => {
                             <table className="table table-zebra">
                                 <thead>
                                     <tr>
-                                        <th><p>Total Pembayaran</p></th>
-                                        <th className="text-end"><p>Kembali</p>
+                                        <th>
+                                            <p>Total Pembayaran</p>
+                                        </th>
+                                        <th className="text-end">
+                                            <p>Kembali</p>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     <tr>
-                                        <td><p className="text-xl font-bold text-red-500">
-                                            Rp.{totalBayar}
-                                        </p></td>
-                                        <td><p className="text-xl font-bold">
-                                            {totalBayar < bayar ? (
-                                                <span className="text-green-500">
-                                                    Rp.
-                                                    {bayar - totalBayar}
-                                                </span>
-                                            ) : (
-                                                <span className="text-gray-500">
-                                                    Bayar Sek!
-                                                    {/* -{totalBayar - bayar} */}
-                                                </span>
-                                            )}
-                                        </p></td>
+                                        <td>
+                                            <p className="text-xl font-bold text-red-500">
+                                                Rp.{totalBayar}
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p className="text-xl font-bold">
+                                                {totalBayar < bayar ? (
+                                                    <span className="text-green-500">
+                                                        Rp.
+                                                        {bayar - totalBayar}
+                                                    </span>
+                                                ) : (
+                                                    <span className="text-gray-500">
+                                                        Bayar Sek!
+                                                        {/* -{totalBayar - bayar} */}
+                                                    </span>
+                                                )}
+                                            </p>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>

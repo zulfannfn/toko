@@ -1,11 +1,12 @@
 import { Link } from "@inertiajs/react";
 import Dropdown from "./Dropdown";
 import { FaShopify } from "react-icons/fa";
+import { FaCartShopping } from "react-icons/fa6";
 
 const NavbarAdmin = ({ user }) => {
     return (
-        <div className="navbar bg-base-100">
-            <div className="flex-1">
+        <div className="navbar px-6 mb-3 ">
+            <div className="navbar-start">
                 <Link
                     href={route("admin/dashboard")}
                     className="btn btn-ghost text-xl"
@@ -14,7 +15,43 @@ const NavbarAdmin = ({ user }) => {
                     ECOMATE SHOP
                 </Link>
             </div>
-            <div className="flex-none gap-2">
+            <div className="navbar-center ">
+                <ul className="menu menu-horizontal px-1">
+                    <li>
+                        <a>Item 1</a>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Parent</summary>
+                            <ul className="p-2">
+                                <li>
+                                    <a>Submenu 1</a>
+                                </li>
+                                <li>
+                                    <a>Submenu 2</a>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <a>Item 3</a>
+                    </li>
+                </ul>
+            </div>
+            <div className=" navbar-end">
+                <ul className="menu menu-sm bg-slate-50 lg:menu-horizontal rounded-box">
+                    <li>
+                        <a>
+                            <FaCartShopping />
+                            {user ? (
+                                <div className="badge p-2">{user.name}</div>
+                            ) : (
+                                <div>Null</div>
+                            )}
+                            <span className="badge badge-xs badge-info"></span>
+                        </a>
+                    </li>
+                </ul>
                 <div className="dropdown dropdown-end">
                     <div
                         tabIndex={0}
