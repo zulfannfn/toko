@@ -6,6 +6,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProdukAdminController;
 use App\Http\Controllers\PelangganAdminController;
 use App\Http\Controllers\PenjualanAdminController;
+use App\Http\Controllers\LaporanAdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Models\Admin;
@@ -71,6 +72,8 @@ Route::get('/admin/pelanggan', [PelangganAdminController::class, 'show'])->name(
 
 Route::post('/admin/penjualan', [PenjualanAdminController::class, 'store'])->middleware(['auth:admin', 'verified'])->name('admin.create.penjualan');
 Route::get('/admin/penjualan', [PenjualanAdminController::class, 'show'])->name('admin.penjualan');
+
+Route::get('/admin/laporan', [LaporanAdminController::class, 'show'])->name('admin.laporan');
 
 Route::get('/admin/dashboard', [DashboardController::class, 'show'])->name('admin.dashboard');
 Route::get('/admin/dashboard', function () {

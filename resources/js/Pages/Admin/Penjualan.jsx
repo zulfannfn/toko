@@ -8,22 +8,11 @@ import { FaHistory } from "react-icons/fa";
 
 export default function Pelanggan(props) {
     const { penjualan, pelanggan, produk } = props;
-    const [dataPenjualan, setDataPenjualan] = useState(null);
 
     const handlePenjualanSubmit = (e, data) => {
         e.preventDefault();
         setDataPenjualan(data);
     };
-
-    // Mengambil data penjualan terbaru dari prop penjualan
-    useEffect(() => {
-        if (penjualan.length > 0) {
-            const latestData = penjualan.slice(-1)[0];
-            setDataPenjualan(latestData);
-        }
-    }, [penjualan]);
-
-    console.log(dataPenjualan);
 
     return (
         <div>

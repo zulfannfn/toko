@@ -3,6 +3,11 @@ import { MdSpaceDashboard } from "react-icons/md";
 import { IoMdCart } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import { GrTransaction } from "react-icons/gr";
+import { RiFileList2Fill } from "react-icons/ri";
+import { MdSell } from "react-icons/md";
+
+
+
 
 export default function NavDashboardLayout({ children }) {
     return (
@@ -27,7 +32,12 @@ export default function NavDashboardLayout({ children }) {
                             Pelanggan
                         </Link>
                     </li>
-
+                    <li>
+                        <Link href={route("admin.laporan")}>
+                            <RiFileList2Fill />
+                            Laporan
+                        </Link>
+                    </li>
                     <li>
                         <details open>
                             <summary>
@@ -37,6 +47,7 @@ export default function NavDashboardLayout({ children }) {
                             <ul>
                                 <li>
                                     <Link href={route("admin.penjualan")}>
+                                        <MdSell />
                                         Penjualan
                                     </Link>
                                 </li>

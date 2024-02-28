@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import FormInputPelanggan from "./FormInputPelanggan";
 import FormInputProduct from "./FormInputProduct";
+import DetailjualProduk from "./DetailJualPrduk";
 import { MdOutlineInput } from "react-icons/md";
 import { TbReportMoney } from "react-icons/tb";
 import { BsCalendar2Date } from "react-icons/bs";
+import { FaPrint } from "react-icons/fa";
+
 
 const FormInputPenjualan = (props) => {
     const { penjualan, pelanggan, produk } = props;
@@ -118,10 +121,8 @@ const FormInputPenjualan = (props) => {
         setProductsToAdd((prevProducts) => [...prevProducts, data]);
     };
 
-    console.log(productsToAdd);
-
-    const handelSubmit = (e) => {
-        e.preventDefault();
+    const handelSubmit =  (event) => {
+        event.preventDefault();
 
         if (
             !idPenjualan ||
@@ -145,7 +146,8 @@ const FormInputPenjualan = (props) => {
         };
         setNotif(true);
 
-        props.onPenjualanSubmit(e, data);
+
+        props.onPenjualanSubmit(event, data);
         Inertia.post("/admin/penjualan", data);
     };
 
@@ -206,14 +208,12 @@ const FormInputPenjualan = (props) => {
                                         })}
                                     </select>
                                     <div className="w-[50%]">
-                                        {/* The button to open modal */}
                                         <label
                                             htmlFor="my_modal_7"
                                             className="btn text-slate-700 text-lg hover:text-white  hover:bg-blue-800 rounded-lg ml-2"
                                         >
                                             <MdOutlineInput />
                                         </label>
-                                        {/* Put this part before </body> tag */}
                                         <input
                                             type="checkbox"
                                             id="my_modal_7"
@@ -271,15 +271,12 @@ const FormInputPenjualan = (props) => {
                                         })}
                                     </select>
                                     <div className="w-[50%]">
-                                        {/* The button to open modal */}
                                         <label
                                             htmlFor="my_modal_8"
                                             className="btn text-slate-700 hover:text-white text-lg hover:bg-blue-800 rounded-lg ml-2"
                                         >
                                             <MdOutlineInput />
                                         </label>
-
-                                        {/* Put this part before </body> tag */}
                                         <input
                                             type="checkbox"
                                             id="my_modal_8"
@@ -365,16 +362,16 @@ const FormInputPenjualan = (props) => {
                             </label>
                         </div>
                     </div>
-                    <div className="flex gap-2 justify-end">
+                    <div className="flex gap-2 justify-end py-2">
                         <button
                             onClick={handelTampungData}
-                            className="text-white btn bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            className="font-extrabold text-black btn bg-blue-100 hover:text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
                             Masukan
                         </button>
                         <button
                             onClick={handelSubmit}
-                            className="text-white btn bg-blue-100 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            className="font-extrabold text-black btn bg-blue-100 hover:text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
                             Sumbmit
                         </button>
@@ -382,8 +379,8 @@ const FormInputPenjualan = (props) => {
                 </form>
             </div>
 
-            <div className="w-[50%] px-4 rounded-xl ">
-                <p className="py-2 text-center font-semibold">
+            <div className="w-[50%] px-4 rounded-xl print-nota" >
+                <p className="py-2 text-center font-semibold bg-slate-50 rounded-t-lg">
                     Pembelian Produk
                 </p>
                 <div className="p-4 bg-slate-50 rounded-md flex flex-row justify-between">
@@ -459,29 +456,76 @@ const FormInputPenjualan = (props) => {
                             </div>
                         </label>
                     </div>
-                    <div className="bg-white p-2 rounded-md">
-                        <p>Total Pembayaran</p>
-                        <p className="text-xl font-bold text-red-500">
-                            Rp.{totalBayar}
-                        </p>
+                    <div>
+                        <div>
+                            {/* The button to open modal */}
+
+                            {totalBayar < bayar ? (
+                                <label htmlFor="my_modal_9" className="btn text-lg">
+                                    <FaPrint />
+                                </label>
+
+                            ) : (
+                                <label>
+                                </label>
+
+                            )}
+                            {/* Put this part before </body> tag */}
+                            <input type="checkbox" id="my_modal_9" className="modal-toggle" />
+                            <div className="modal" role="dialog">
+                                <div className="modal-box w-11/12 max-w-5xl">
+                                    <p className="py-4">
+                                        <DetailjualProduk
+                                            idPenjualan={idPenjualan}
+                                            idPelanggan={idPelanggan}
+                                            namaPelanggan={namaPelanggan}
+                                            tanggalPenjualan={tanggalPenjualan}
+                                            productsToAdd={productsToAdd}
+                                            bayar={bayar}
+                                            totalBayar={totalBayar}
+                                        />
+                                    </p>
+                                </div>
+                                <label className="modal-backdrop" htmlFor="my_modal_9">Close</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="overflow-x-auto">
+                            <table className="table table-zebra">
+                                <thead>
+                                    <tr>
+                                        <th><p>Total Pembayaran</p></th>
+                                        <th className="text-end"><p>Kembali</p>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td><p className="text-xl font-bold text-red-500">
+                                            Rp.{totalBayar}
+                                        </p></td>
+                                        <td><p className="text-xl font-bold">
+                                            {totalBayar < bayar ? (
+                                                <span className="text-green-500">
+                                                    Rp.
+                                                    {bayar - totalBayar}
+                                                </span>
+                                            ) : (
+                                                <span className="text-gray-500">
+                                                    Bayar Sek!
+                                                    {/* -{totalBayar - bayar} */}
+                                                </span>
+                                            )}
+                                        </p></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
-                    <div className="flex flex-col items-end bg-white p-2 rounded-md">
-                        <p>Kembali</p>
-                        <p className="text-xl font-bold">
-                            {totalBayar < bayar ? (
-                                <span className="text-green-500">
-                                    Rp.
-                                    {bayar - totalBayar}
-                                </span>
-                            ) : (
-                                <span className="text-gray-500">
-                                    Bayar Sek!
-                                    {/* -{totalBayar - bayar} */}
-                                </span>
-                            )}
-                        </p>
-                    </div>
+
                 </div>
             </div>
         </div>

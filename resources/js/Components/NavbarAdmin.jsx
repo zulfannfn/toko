@@ -1,5 +1,6 @@
 import { Link } from "@inertiajs/react";
 import Dropdown from "./Dropdown";
+import { FaShopify } from "react-icons/fa";
 
 const NavbarAdmin = ({ user }) => {
     return (
@@ -9,7 +10,8 @@ const NavbarAdmin = ({ user }) => {
                     href={route("admin/dashboard")}
                     className="btn btn-ghost text-xl"
                 >
-                    Dashboard
+                    <FaShopify />
+                    ECOMATE SHOP
                 </Link>
             </div>
             <div className="flex-none gap-2">
